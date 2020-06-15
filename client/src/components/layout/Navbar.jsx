@@ -7,6 +7,9 @@ import { logout } from '../../actions/auth'
 const Navbar = ({logout, auth :{ isAuthenticated, loading }}) => {
   const authLinks =(
     <ul>
+      <li><Link to="/dashboard">
+      <i className="fas fa-sign-out-alt"></i>{' '}<span className= 'hide-sm'> Dashboard</span>
+       </Link></li>
       <li>
         <a onClick={logout} href='#!'>
         <i className="fas fa-sign-out-alt"></i>{' '}<span className= 'hide-sm'>Logout</span>
@@ -33,9 +36,9 @@ const Navbar = ({logout, auth :{ isAuthenticated, loading }}) => {
     )
 }
 
-Navbar.propTypes={
+Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.func.isRequired
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state =>({
