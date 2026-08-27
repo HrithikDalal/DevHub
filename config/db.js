@@ -4,12 +4,7 @@ const db = config.get("mongoURI");
 
 const connectDB = async () =>{
     try{
-        await mongoose.connect(db , { 
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            useFindAndModify: false
-         });
+        await mongoose.connect(db);
         console.log("Connection Established with MongoDB Atlas server...");
     }catch(err){
         console.error(err.message);
