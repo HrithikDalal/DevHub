@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-import Routes from './components/routing/Routes';
+import AppRoutes from './components/routing/AppRoutes';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -23,10 +23,10 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route component={Routes} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/*" element={<AppRoutes />} />
+          </Routes>
         </Fragment>
       </Router>
     </Provider>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
-import Moment from 'react-moment';
 import { deleteComment } from '../../actions/post';
 
 const CommentItem = ({
@@ -21,7 +21,7 @@ const CommentItem = ({
     <div>
       <p className='my-1'>{text}</p>
       <p className='post-date'>
-        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+        Posted on {formatDate(date)}
       </p>
       {!auth.loading && user === auth.user._id && (
         <button

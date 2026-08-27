@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
-import moment from 'moment';
+import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { deleteExperience } from '../../actions/profile';
 
@@ -11,11 +10,11 @@ const Experience = ({ experience, deleteExperience }) => {
       <td>{exp.company}</td>
       <td className="hide-sm">{exp.title}</td>
       <td>
-        <Moment format="YYYY/MM/DD">{moment.utc(exp.from)}</Moment> -{' '}
+        {formatDate(exp.from)} -{' '}
         {exp.to === null ? (
           ' Now'
         ) : (
-          <Moment format="YYYY/MM/DD">{moment.utc(exp.to)}</Moment>
+          formatDate(exp.to)
         )}
       </td>
       <td>

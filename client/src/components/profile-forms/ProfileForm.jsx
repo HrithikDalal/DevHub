@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
@@ -22,9 +22,8 @@ const initialState = {
 const ProfileForm = ({
   profile: { profile, loading },
   createProfile,
-  getCurrentProfile,
-  history
-}) => {
+  getCurrentProfile}) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(initialState);
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -65,7 +64,7 @@ const ProfileForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history, profile ? true : false);
+    createProfile(formData, navigate, profile ? true : false);
   };
 
   return (
